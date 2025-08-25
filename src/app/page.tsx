@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from './style.module.scss';
+import styles from "./style.module.scss";
 
 const words = [
   "dog",
@@ -27,7 +27,7 @@ export default function HOME() {
   const [input, setInput] = useState(""); //文字入力
   const [guesses, setGuesses] = useState<String[]>([]); //入力履歴
   const [attempts, setAttempts] = useState(5); //残り失敗回数
-  const [gameOver, setGameOver] =useState(false); //ゲーム終了判定
+  const [gameOver, setGameOver] = useState(false); //ゲーム終了判定
 
   const handleGuess = () => {
     if (!/^[a-zA-Z]$/.test(input)) {
@@ -69,10 +69,11 @@ export default function HOME() {
   };
 
   // ゲームリセット
-  const resetGame =()=> {
-    const randomWord =words[Math.floor(Math.random() * words.length)]toLowerCase();
+  const resetGame = () => {
+    const randomWord =
+      words[Math.floor(Math.random() * words.length)].toLowerCase();
     setWord(randomWord);
-    setGuesses([])
+    setGuesses([]);
     setAttempts(5);
     setGameOver(false);
     setInput("");
@@ -93,10 +94,7 @@ export default function HOME() {
             className={styles.input}
             placeholder="ここに入力"
           />
-          <button
-            onClick={handleGuess}
-            className={styles.button}
-          >
+          <button onClick={handleGuess} className={styles.button}>
             決定
           </button>
         </div>
@@ -105,16 +103,11 @@ export default function HOME() {
       <p>{getDisplayWord()}</p>
 
       {gameOver && (
-        <p>
-          {attempts > 0 ? "正解！" : `不正解… 正解は "${word}"`}
-        </p>
+        <p>{attempts > 0 ? "正解！" : `不正解… 正解は "${word}"`}</p>
       )}
 
       {gameOver && (
-        <button
-          onClick={resetGame}
-          className={styles.button}
-        >
+        <button onClick={resetGame} className={styles.button}>
           もう一度プレイ
         </button>
       )}
