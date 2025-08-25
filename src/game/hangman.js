@@ -1,5 +1,5 @@
 const readline = require("readline");
-const { displayPartsToString } = require("typescript");
+// const { displayPartsToString } = require("typescript");
 
 const words = [
   "dog",
