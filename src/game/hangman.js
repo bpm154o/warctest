@@ -12,21 +12,26 @@ const words = [
   "bicycle",
   "hospital",
 ];
-const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
-
-let guesses = [];
-let attempts = 5; //失敗可能数
+let word, guesses, attempts;
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
+function initGame() {
+  word = words[Math.floor(Math.random() * words.length)].toLowerCase();
+  guesses = [];
+  attempts = 5;
+  console.log("単語あてゲーム");
+  askGuess();
+}
+
 function getDisplayWord() {
   return word
     .split("")
     .map((letter) => (guesses.includes(letter) ? letter : "_"))
-    .join("");
+    .join(" ");
 }
 
 function checkGameOver() {
@@ -77,5 +82,4 @@ function askGuess() {
   });
 }
 
-console.log("単語あてゲーム");
-askGuess();
+initGame();
