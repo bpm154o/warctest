@@ -1,11 +1,11 @@
 /* eslint-disable react/display-name */
+"use client";
 
-import styles from "./style.module.scss";
-
-export default function Home() {
+export default function HOME() {
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>テスト</div>
+    <div>
+      <h1>単語あてゲーム</h1>
+      <p>ここにゲーム画面が入る</p>
     </div>
   );
 }
