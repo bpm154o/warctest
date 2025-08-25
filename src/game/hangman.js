@@ -1,7 +1,18 @@
 const readline = require("readline");
 const { displayPartsToString } = require("typescript");
 
-const words = ["apple", "dog"];
+const words = [
+  "dog",
+  "sun",
+  "apple",
+  "house",
+  "train",
+  "garden",
+  "teacher",
+  "airport",
+  "bicycle",
+  "hospital",
+];
 const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
 
 let guesses = [];
