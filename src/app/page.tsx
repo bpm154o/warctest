@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import styles from './style.module.scss';
 
 const words = [
   "dog",
@@ -82,37 +83,41 @@ export default function HOME() {
     <div>
       <h1>単語あてゲーム</h1>
 
-      {!gameOver ? (
-        <div className="">
+      {!gameOver && (
+        <div className="flex gap-2 mt-2">
           <input
             type="text"
             maxLength={1}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="border p-2"
+            className={styles.input}
             placeholder="ここに入力"
           />
           <button
             onClick={handleGuess}
-            className=""
+            className={styles.button}
           >
             決定
           </button>
         </div>
-      ) : (
-        <div className="">
-          <p>{attempts > 0 ? "勝ち！" : `負け… 正解は "${word}"`}</p>
-          <button
-            onClick={resetGame}
-            className=""
-          >
-            もう一度プレイ
-          </button>
-        </div>
+      )}
+      <p>入力した文字: {guesses.join(", ")}</p>
+      <p>{getDisplayWord()}</p>
+
+      {gameOver && (
+        <p>
+          {attempts > 0 ? "正解！" : `不正解… 正解は "${word}"`}
+        </p>
       )}
 
-      <p>入力した文字: {guesses.join(",")}</p>
-      <p>{getDisplayWord()}</p>
+      {gameOver && (
+        <button
+          onClick={resetGame}
+          className={styles.button}
+        >
+          もう一度プレイ
+        </button>
+      )}
     </div>
   );
 }
