@@ -17,7 +17,7 @@ const words = [
 ];
 
 export default function HOME() {
-  const [ward, setWord] = useState<string | null>(null);
+  const [word, setWord] = useState<string>("");
   useEffect(() => {
     setWord(words[Math.floor(Math.random() * words.length)].toLowerCase());
   }, []);
@@ -42,6 +42,14 @@ export default function HOME() {
     setInput(""); //入力欄をクリア
   };
 
+  //表示用の文字列を作る
+  const getDisplayWord = () => {
+    return word
+      .split("")
+      .map((letter) => (guesses.includes(letter) ? letter : "_"))
+      .join(" ");
+  };
+
   return (
     <div>
       <h1>単語あてゲーム</h1>
@@ -57,6 +65,7 @@ export default function HOME() {
         <button onClick={handleGuess}>決定</button>
       </div>
       <p>入力した文字: {guesses.join(",")}</p>
+      <p>{getDisplayWord()}</p>
     </div>
   );
 }
